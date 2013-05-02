@@ -151,10 +151,16 @@ module.exports = function (grunt) {
         },
         // not used since Uglify task does concat,
         // but still available if needed
-        /*concat: {
-            dist: {}
-        },*/
-        
+        concat: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= yeoman.app %>/',
+                    src: '!*.php',
+                    dest: '<%= yeoman.dist %>/'
+                }]
+            }
+        },
         uglify: {
             dist: {
                 files: {
@@ -204,7 +210,7 @@ module.exports = function (grunt) {
                     // https://github.com/yeoman/grunt-usemin/issues/44
                     collapseWhitespace: true,
                     collapseBooleanAttributes: true,
-                    removeAttributeQuotes: true,
+                    // removeAttributeQuotes: true,
                     removeRedundantAttributes: true,
                     // useShortDoctype: true,
                     removeEmptyAttributes: true,
